@@ -1,0 +1,724 @@
+TensorFlow 2.0 Upgrade Script
+-----------------------------
+Converted 68 files
+Detected 7 issues that require attention
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+File: ./spinup/utils/mpi_tf.py
+--------------------------------------------------------------------------------
+./spinup/utils/mpi_tf.py:49:25: WARNING: (Manual check required) upgrading compute_gradients may require renaming or removing call arguments, but it was passed variable-length *args or **kwargs. The upgrade script cannot handle these automatically.
+--------------------------------------------------------------------------------
+File: ./spinup/utils/logx.py
+--------------------------------------------------------------------------------
+./spinup/utils/logx.py:59:4: WARNING: tf.saved_model.loader.load requires manual check. tf.saved_model.load works differently in 2.0 compared to 1.0. See migration information in the documentation of tf.compat.v1.saved_model.load.
+The calls have been converted to compat.v1.
+./spinup/utils/logx.py:272:16: WARNING: *.save requires manual check. (This warning is only applicable if the code saves a tf.Keras model) Keras model.save now saves to the Tensorflow SavedModel format by default, instead of HDF5. To continue saving to HDF5, add the argument save_format='h5' to the save() function.
+--------------------------------------------------------------------------------
+File: ./spinup/exercises/tf1/problem_set_1_solutions/exercise1_2_soln.py
+--------------------------------------------------------------------------------
+./spinup/exercises/tf1/problem_set_1_solutions/exercise1_2_soln.py:19:14: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+--------------------------------------------------------------------------------
+File: ./spinup/algos/tf1/trpo/core.py
+--------------------------------------------------------------------------------
+./spinup/algos/tf1/trpo/core.py:129:14: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+--------------------------------------------------------------------------------
+File: ./spinup/algos/tf1/vpg/core.py
+--------------------------------------------------------------------------------
+./spinup/algos/tf1/vpg/core.py:80:14: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+--------------------------------------------------------------------------------
+File: ./spinup/algos/tf1/ppo/core.py
+--------------------------------------------------------------------------------
+./spinup/algos/tf1/ppo/core.py:80:14: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+================================================================================
+Detailed log follows:
+
+================================================================================
+================================================================================
+Input tree: './'
+================================================================================
+--------------------------------------------------------------------------------
+Processing file './setup.py'
+ outputting to '../my_project_v2/setup.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './docs/conf.py'
+ outputting to '../my_project_v2/docs/conf.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/__init__.py'
+ outputting to '../my_project_v2/spinup/__init__.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/run.py'
+ outputting to '../my_project_v2/spinup/run.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/version.py'
+ outputting to '../my_project_v2/spinup/version.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/user_config.py'
+ outputting to '../my_project_v2/spinup/user_config.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/utils/__init__.py'
+ outputting to '../my_project_v2/spinup/utils/__init__.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/utils/mpi_tools.py'
+ outputting to '../my_project_v2/spinup/utils/mpi_tools.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/utils/serialization_utils.py'
+ outputting to '../my_project_v2/spinup/utils/serialization_utils.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/utils/run_utils.py'
+ outputting to '../my_project_v2/spinup/utils/run_utils.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/utils/run_entrypoint.py'
+ outputting to '../my_project_v2/spinup/utils/run_entrypoint.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/utils/mpi_pytorch.py'
+ outputting to '../my_project_v2/spinup/utils/mpi_pytorch.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/utils/test_policy.py'
+ outputting to '../my_project_v2/spinup/utils/test_policy.py'
+--------------------------------------------------------------------------------
+
+74:11: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/utils/mpi_tf.py'
+ outputting to '../my_project_v2/spinup/utils/mpi_tf.py'
+--------------------------------------------------------------------------------
+
+14:21: INFO: Renamed 'tf.assign' to 'tf.compat.v1.assign'
+21:20: INFO: Renamed 'tf.py_func' to 'tf.compat.v1.py_func'
+26:23: INFO: Renamed 'tf.global_variables' to 'tf.compat.v1.global_variables'
+29:23: INFO: Renamed 'tf.train.AdamOptimizer' to 'tf.compat.v1.train.AdamOptimizer'
+43:8: INFO: Renamed 'tf.train.AdamOptimizer' to 'tf.compat.v1.train.AdamOptimizer'
+49:25: WARNING: (Manual check required) upgrading compute_gradients may require renaming or removing call arguments, but it was passed variable-length *args or **kwargs. The upgrade script cannot handle these automatically.
+63:24: INFO: Renamed 'tf.py_func' to 'tf.compat.v1.py_func'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/utils/plot.py'
+ outputting to '../my_project_v2/spinup/utils/plot.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/utils/logx.py'
+ outputting to '../my_project_v2/spinup/utils/logx.py'
+--------------------------------------------------------------------------------
+
+59:4: WARNING: tf.saved_model.loader.load requires manual check. tf.saved_model.load works differently in 2.0 compared to 1.0. See migration information in the documentation of tf.compat.v1.saved_model.load.
+The calls have been converted to compat.v1.
+59:4: INFO: Renamed 'tf.saved_model.loader.load' to 'tf.compat.v1.saved_model.load'
+61:17: INFO: Renamed 'tf.saved_model.tag_constants.SERVING' to 'tf.saved_model.SERVING'
+65:12: INFO: Renamed 'tf.get_default_graph' to 'tf.compat.v1.get_default_graph'
+230:12: INFO: Renamed 'tf.saved_model.simple_save' to 'tf.compat.v1.saved_model.simple_save'
+272:16: WARNING: *.save requires manual check. (This warning is only applicable if the code saves a tf.Keras model) Keras model.save now saves to the Tensorflow SavedModel format by default, instead of HDF5. To continue saving to HDF5, add the argument save_format='h5' to the save() function.
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/exercises/common.py'
+ outputting to '../my_project_v2/spinup/exercises/common.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/exercises/tf1/problem_set_1_solutions/exercise1_2_soln.py'
+ outputting to '../my_project_v2/spinup/exercises/tf1/problem_set_1_solutions/exercise1_2_soln.py'
+--------------------------------------------------------------------------------
+
+9:12: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+10:11: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+19:14: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+19:14: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+21:14: INFO: Renamed 'tf.random_normal' to 'tf.random.normal'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/exercises/tf1/problem_set_1_solutions/exercise1_1_soln.py'
+ outputting to '../my_project_v2/spinup/exercises/tf1/problem_set_1_solutions/exercise1_1_soln.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/exercises/tf1/problem_set_1/exercise1_1.py'
+ outputting to '../my_project_v2/spinup/exercises/tf1/problem_set_1/exercise1_1.py'
+--------------------------------------------------------------------------------
+
+41:11: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+44:8: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+45:9: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+46:14: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/exercises/tf1/problem_set_1/exercise1_3.py'
+ outputting to '../my_project_v2/spinup/exercises/tf1/problem_set_1/exercise1_3.py'
+--------------------------------------------------------------------------------
+
+161:4: INFO: Renamed 'tf.set_random_seed' to 'tf.compat.v1.set_random_seed'
+184:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+194:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+204:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+253:19: INFO: Renamed 'tf.train.AdamOptimizer' to 'tf.compat.v1.train.AdamOptimizer'
+254:18: INFO: Renamed 'tf.train.AdamOptimizer' to 'tf.compat.v1.train.AdamOptimizer'
+259:30: INFO: Renamed 'tf.assign' to 'tf.compat.v1.assign'
+263:28: INFO: Renamed 'tf.assign' to 'tf.compat.v1.assign'
+266:11: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+267:13: INFO: Renamed 'tf.global_variables_initializer' to 'tf.compat.v1.global_variables_initializer'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/exercises/tf1/problem_set_1/exercise1_2.py'
+ outputting to '../my_project_v2/spinup/exercises/tf1/problem_set_1/exercise1_2.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/exercises/tf1/problem_set_2/exercise2_2.py'
+ outputting to '../my_project_v2/spinup/exercises/tf1/problem_set_2/exercise2_2.py'
+--------------------------------------------------------------------------------
+
+26:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+28:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+30:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/exercises/pytorch/problem_set_1_solutions/exercise1_2_soln.py'
+ outputting to '../my_project_v2/spinup/exercises/pytorch/problem_set_1_solutions/exercise1_2_soln.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/exercises/pytorch/problem_set_1_solutions/exercise1_1_soln.py'
+ outputting to '../my_project_v2/spinup/exercises/pytorch/problem_set_1_solutions/exercise1_1_soln.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/exercises/pytorch/problem_set_1/exercise1_1.py'
+ outputting to '../my_project_v2/spinup/exercises/pytorch/problem_set_1/exercise1_1.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/exercises/pytorch/problem_set_1/exercise1_2_auxiliary.py'
+ outputting to '../my_project_v2/spinup/exercises/pytorch/problem_set_1/exercise1_2_auxiliary.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/exercises/pytorch/problem_set_1/exercise1_3.py'
+ outputting to '../my_project_v2/spinup/exercises/pytorch/problem_set_1/exercise1_3.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/exercises/pytorch/problem_set_1/exercise1_2.py'
+ outputting to '../my_project_v2/spinup/exercises/pytorch/problem_set_1/exercise1_2.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/exercises/pytorch/problem_set_2/exercise2_2.py'
+ outputting to '../my_project_v2/spinup/exercises/pytorch/problem_set_2/exercise2_2.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/algos/__init__.py'
+ outputting to '../my_project_v2/spinup/algos/__init__.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/algos/tf1/sac/core.py'
+ outputting to '../my_project_v2/spinup/algos/tf1/sac/core.py'
+--------------------------------------------------------------------------------
+
+7:11: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+14:12: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+15:11: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+18:23: INFO: Renamed 'tf.global_variables' to 'tf.compat.v1.global_variables'
+39:9: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+40:14: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+44:14: INFO: Renamed 'tf.random_normal' to 'tf.random.normal'
+67:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+78:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+80:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/algos/tf1/sac/__init__.py'
+ outputting to '../my_project_v2/spinup/algos/tf1/sac/__init__.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/algos/tf1/sac/sac.py'
+ outputting to '../my_project_v2/spinup/algos/tf1/sac/sac.py'
+--------------------------------------------------------------------------------
+
+137:4: INFO: Renamed 'tf.set_random_seed' to 'tf.compat.v1.set_random_seed'
+154:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+157:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+165:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+191:19: INFO: Renamed 'tf.train.AdamOptimizer' to 'tf.compat.v1.train.AdamOptimizer'
+196:22: INFO: Renamed 'tf.train.AdamOptimizer' to 'tf.compat.v1.train.AdamOptimizer'
+204:34: INFO: Renamed 'tf.assign' to 'tf.compat.v1.assign'
+212:28: INFO: Renamed 'tf.assign' to 'tf.compat.v1.assign'
+215:11: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+216:13: INFO: Renamed 'tf.global_variables_initializer' to 'tf.compat.v1.global_variables_initializer'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/algos/tf1/ddpg/core.py'
+ outputting to '../my_project_v2/spinup/algos/tf1/ddpg/core.py'
+--------------------------------------------------------------------------------
+
+6:11: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+13:12: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+14:11: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+17:23: INFO: Renamed 'tf.global_variables' to 'tf.compat.v1.global_variables'
+30:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+32:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+34:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/algos/tf1/ddpg/__init__.py'
+ outputting to '../my_project_v2/spinup/algos/tf1/ddpg/__init__.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/algos/tf1/ddpg/ddpg.py'
+ outputting to '../my_project_v2/spinup/algos/tf1/ddpg/ddpg.py'
+--------------------------------------------------------------------------------
+
+132:4: INFO: Renamed 'tf.set_random_seed' to 'tf.compat.v1.set_random_seed'
+149:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+153:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+173:19: INFO: Renamed 'tf.train.AdamOptimizer' to 'tf.compat.v1.train.AdamOptimizer'
+174:18: INFO: Renamed 'tf.train.AdamOptimizer' to 'tf.compat.v1.train.AdamOptimizer'
+179:30: INFO: Renamed 'tf.assign' to 'tf.compat.v1.assign'
+183:28: INFO: Renamed 'tf.assign' to 'tf.compat.v1.assign'
+186:11: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+187:13: INFO: Renamed 'tf.global_variables_initializer' to 'tf.compat.v1.global_variables_initializer'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/algos/tf1/trpo/core.py'
+ outputting to '../my_project_v2/spinup/algos/tf1/trpo/core.py'
+--------------------------------------------------------------------------------
+
+20:11: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+29:15: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+37:12: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+38:11: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+41:23: INFO: Renamed 'tf.trainable_variables' to 'tf.compat.v1.trainable_variables'
+79:8: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+86:21: INFO: Renamed 'tf.assign' to 'tf.compat.v1.assign'
+113:20: INFO: Renamed 'tf.multinomial' to 'tf.random.categorical'
+129:14: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+129:14: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+131:14: INFO: Renamed 'tf.random_normal' to 'tf.random.normal'
+156:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+159:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/algos/tf1/trpo/__init__.py'
+ outputting to '../my_project_v2/spinup/algos/tf1/trpo/__init__.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/algos/tf1/trpo/trpo.py'
+ outputting to '../my_project_v2/spinup/algos/tf1/trpo/trpo.py'
+--------------------------------------------------------------------------------
+
+203:4: INFO: Renamed 'tf.set_random_seed' to 'tf.compat.v1.set_random_seed'
+254:11: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+255:13: INFO: Renamed 'tf.global_variables_initializer' to 'tf.compat.v1.global_variables_initializer'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/algos/tf1/td3/core.py'
+ outputting to '../my_project_v2/spinup/algos/tf1/td3/core.py'
+--------------------------------------------------------------------------------
+
+6:11: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+13:12: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+14:11: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+17:23: INFO: Renamed 'tf.global_variables' to 'tf.compat.v1.global_variables'
+30:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+32:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+34:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+36:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/algos/tf1/td3/__init__.py'
+ outputting to '../my_project_v2/spinup/algos/tf1/td3/__init__.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/algos/tf1/td3/td3.py'
+ outputting to '../my_project_v2/spinup/algos/tf1/td3/td3.py'
+--------------------------------------------------------------------------------
+
+145:4: INFO: Renamed 'tf.set_random_seed' to 'tf.compat.v1.set_random_seed'
+162:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+166:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+170:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+173:18: INFO: Renamed 'tf.random_normal' to 'tf.random.normal'
+199:19: INFO: Renamed 'tf.train.AdamOptimizer' to 'tf.compat.v1.train.AdamOptimizer'
+200:18: INFO: Renamed 'tf.train.AdamOptimizer' to 'tf.compat.v1.train.AdamOptimizer'
+205:30: INFO: Renamed 'tf.assign' to 'tf.compat.v1.assign'
+209:28: INFO: Renamed 'tf.assign' to 'tf.compat.v1.assign'
+212:11: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+213:13: INFO: Renamed 'tf.global_variables_initializer' to 'tf.compat.v1.global_variables_initializer'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/algos/tf1/vpg/core.py'
+ outputting to '../my_project_v2/spinup/algos/tf1/vpg/core.py'
+--------------------------------------------------------------------------------
+
+14:11: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+23:15: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+31:12: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+32:11: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+35:23: INFO: Renamed 'tf.trainable_variables' to 'tf.compat.v1.trainable_variables'
+71:20: INFO: Renamed 'tf.multinomial' to 'tf.random.categorical'
+80:14: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+80:14: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+82:14: INFO: Renamed 'tf.random_normal' to 'tf.random.normal'
+100:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+102:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/algos/tf1/vpg/__init__.py'
+ outputting to '../my_project_v2/spinup/algos/tf1/vpg/__init__.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/algos/tf1/vpg/vpg.py'
+ outputting to '../my_project_v2/spinup/algos/tf1/vpg/vpg.py'
+--------------------------------------------------------------------------------
+
+155:4: INFO: Renamed 'tf.set_random_seed' to 'tf.compat.v1.set_random_seed'
+198:11: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+199:13: INFO: Renamed 'tf.global_variables_initializer' to 'tf.compat.v1.global_variables_initializer'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/algos/tf1/ppo/core.py'
+ outputting to '../my_project_v2/spinup/algos/tf1/ppo/core.py'
+--------------------------------------------------------------------------------
+
+14:11: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+23:15: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+31:12: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+32:11: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+35:23: INFO: Renamed 'tf.trainable_variables' to 'tf.compat.v1.trainable_variables'
+71:20: INFO: Renamed 'tf.multinomial' to 'tf.random.categorical'
+80:14: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+80:14: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+82:14: INFO: Renamed 'tf.random_normal' to 'tf.random.normal'
+100:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+102:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/algos/tf1/ppo/ppo.py'
+ outputting to '../my_project_v2/spinup/algos/tf1/ppo/ppo.py'
+--------------------------------------------------------------------------------
+
+170:4: INFO: Renamed 'tf.set_random_seed' to 'tf.compat.v1.set_random_seed'
+203:14: INFO: Renamed 'tf.where' to 'tf.compat.v1.where'
+217:11: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+218:13: INFO: Renamed 'tf.global_variables_initializer' to 'tf.compat.v1.global_variables_initializer'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/algos/tf1/ppo/__init__.py'
+ outputting to '../my_project_v2/spinup/algos/tf1/ppo/__init__.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/algos/pytorch/sac/core.py'
+ outputting to '../my_project_v2/spinup/algos/pytorch/sac/core.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/algos/pytorch/sac/sac.py'
+ outputting to '../my_project_v2/spinup/algos/pytorch/sac/sac.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/algos/pytorch/ddpg/core.py'
+ outputting to '../my_project_v2/spinup/algos/pytorch/ddpg/core.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/algos/pytorch/ddpg/ddpg.py'
+ outputting to '../my_project_v2/spinup/algos/pytorch/ddpg/ddpg.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/algos/pytorch/trpo/trpo.py'
+ outputting to '../my_project_v2/spinup/algos/pytorch/trpo/trpo.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/algos/pytorch/td3/core.py'
+ outputting to '../my_project_v2/spinup/algos/pytorch/td3/core.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/algos/pytorch/td3/td3.py'
+ outputting to '../my_project_v2/spinup/algos/pytorch/td3/td3.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/algos/pytorch/vpg/core.py'
+ outputting to '../my_project_v2/spinup/algos/pytorch/vpg/core.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/algos/pytorch/vpg/vpg.py'
+ outputting to '../my_project_v2/spinup/algos/pytorch/vpg/vpg.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/algos/pytorch/ppo/core.py'
+ outputting to '../my_project_v2/spinup/algos/pytorch/ppo/core.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/algos/pytorch/ppo/ppo.py'
+ outputting to '../my_project_v2/spinup/algos/pytorch/ppo/ppo.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/examples/tf1/bench_ppo_cartpole.py'
+ outputting to '../my_project_v2/spinup/examples/tf1/bench_ppo_cartpole.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/examples/tf1/train_mnist.py'
+ outputting to '../my_project_v2/spinup/examples/tf1/train_mnist.py'
+--------------------------------------------------------------------------------
+
+9:12: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+10:11: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+26:11: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+27:11: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+33:11: INFO: tf.losses.softmax_cross_entropy requires manual check. tf.losses have been replaced with object oriented versions in TF 2.0 and after. The loss function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+33:11: INFO: Renamed 'tf.losses.softmax_cross_entropy' to 'tf.compat.v1.losses.softmax_cross_entropy'
+35:15: INFO: Renamed 'tf.train.AdamOptimizer' to 'tf.compat.v1.train.AdamOptimizer'
+38:11: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+39:13: INFO: Renamed 'tf.global_variables_initializer' to 'tf.compat.v1.global_variables_initializer'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/examples/tf1/pg_math/2_rtg_pg.py'
+ outputting to '../my_project_v2/spinup/examples/tf1/pg_math/2_rtg_pg.py'
+--------------------------------------------------------------------------------
+
+9:12: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+10:11: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+33:13: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+37:25: INFO: Renamed 'tf.multinomial' to 'tf.random.categorical'
+40:17: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+41:13: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+47:15: INFO: Renamed 'tf.train.AdamOptimizer' to 'tf.compat.v1.train.AdamOptimizer'
+49:11: INFO: Renamed 'tf.InteractiveSession' to 'tf.compat.v1.InteractiveSession'
+50:13: INFO: Renamed 'tf.global_variables_initializer' to 'tf.compat.v1.global_variables_initializer'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/examples/tf1/pg_math/1_simple_pg.py'
+ outputting to '../my_project_v2/spinup/examples/tf1/pg_math/1_simple_pg.py'
+--------------------------------------------------------------------------------
+
+9:12: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+10:11: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+26:13: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+30:25: INFO: Renamed 'tf.multinomial' to 'tf.random.categorical'
+33:17: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+34:13: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+40:15: INFO: Renamed 'tf.train.AdamOptimizer' to 'tf.compat.v1.train.AdamOptimizer'
+42:11: INFO: Renamed 'tf.InteractiveSession' to 'tf.compat.v1.InteractiveSession'
+43:13: INFO: Renamed 'tf.global_variables_initializer' to 'tf.compat.v1.global_variables_initializer'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/examples/pytorch/bench_ppo_cartpole.py'
+ outputting to '../my_project_v2/spinup/examples/pytorch/bench_ppo_cartpole.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/examples/pytorch/pg_math/2_rtg_pg.py'
+ outputting to '../my_project_v2/spinup/examples/pytorch/pg_math/2_rtg_pg.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './spinup/examples/pytorch/pg_math/1_simple_pg.py'
+ outputting to '../my_project_v2/spinup/examples/pytorch/pg_math/1_simple_pg.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file './test/test_ppo.py'
+ outputting to '../my_project_v2/test/test_ppo.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
