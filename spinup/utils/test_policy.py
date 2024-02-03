@@ -4,6 +4,7 @@ import os
 import os.path as osp
 import tensorflow as tf
 import torch
+import gymnasium as gym
 from spinup import EpochLogger
 from spinup.utils.logx import restore_tf_graph
 
@@ -57,7 +58,9 @@ def load_policy_and_env(fpath, itr='last', deterministic=False):
     # (sometimes this will fail because the environment could not be pickled)
     try:
         state = joblib.load(osp.join(fpath, 'vars'+itr+'.pkl'))
-        env = state['env']
+        # env = state['env']
+        print("Env id: ", state['env_id'])
+        env = gym.make(state['env_id'], render_mode="human")
     except:
         env = None
 
@@ -115,14 +118,15 @@ def run_policy(env, get_action, max_ep_len=None, num_episodes=100, render=True):
         "page on Experiment Outputs for how to handle this situation."
 
     logger = EpochLogger()
-    o, r, d, ep_ret, ep_len, n = env.reset(), 0, False, 0, 0, 0
+    o, _ = env.reset()
+    r, d, ep_ret, ep_len, n = 0, False, 0, 0, 0
     while n < num_episodes:
         if render:
             env.render()
             time.sleep(1e-3)
 
         a = get_action(o)
-        o, r, d, _ = env.step(a)
+        o, r, d, _ , _= env.step(a)
         ep_ret += r
         ep_len += 1
 
