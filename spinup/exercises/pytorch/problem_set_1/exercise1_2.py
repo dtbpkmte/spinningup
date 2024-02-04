@@ -38,13 +38,20 @@ def mlp(sizes, activation, output_activation=nn.Identity):
     #   YOUR CODE HERE    #
     #                     #
     #######################
-    pass
+    model = nn.Sequential()
+    for i in range(len(sizes) - 2):
+        model.append(nn.Linear(sizes[i], sizes[i+1]))
+        model.append(activation())
+    model.append(nn.Linear(sizes[-2], sizes[-1]))
+    model.append(output_activation())
+    return model
 
 class DiagonalGaussianDistribution:
 
     def __init__(self, mu, log_std):
         self.mu = mu
         self.log_std = log_std
+        self.norm_dist = torch.distributions.Normal(mu, torch.exp(log_std))
 
     def sample(self):
         """
@@ -57,7 +64,7 @@ class DiagonalGaussianDistribution:
         #   YOUR CODE HERE    #
         #                     #
         #######################
-        pass
+        return self.norm_dist.sample()
 
     #================================(Given, ignore)==========================================#
     def log_prob(self, value):
@@ -85,9 +92,8 @@ class MLPGaussianActor(nn.Module):
         #   YOUR CODE HERE    #
         #                     #
         #######################
-        # self.log_std = 
-        # self.mu_net = 
-        pass 
+        self.log_std = torch.nn.Parameter(-0.5 * torch.ones(act_dim))
+        self.mu_net = mlp([obs_dim, *hidden_sizes, act_dim], activation)
 
     #================================(Given, ignore)==========================================#
     def forward(self, obs, act=None):
@@ -119,7 +125,7 @@ if __name__ == '__main__':
 
     ActorCritic = partial(exercise1_2_auxiliary.ExerciseActorCritic, actor=MLPGaussianActor)
     
-    ppo(env_fn = lambda : gym.make('InvertedPendulum-v2'),
+    ppo(env_fn = lambda : gym.make('InvertedPendulum-v4'),
         actor_critic=ActorCritic,
         ac_kwargs=dict(hidden_sizes=(64,)),
         steps_per_epoch=4000, epochs=20, logger_kwargs=dict(output_dir=logdir))
